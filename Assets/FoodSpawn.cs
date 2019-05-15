@@ -6,6 +6,8 @@ public class FoodSpawn : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    //public bool isEnabled = true;
+
     // Prefabs
     public GameObject foodPrefab;
 
@@ -18,17 +20,14 @@ public class FoodSpawn : MonoBehaviour
     void Spawn()
     {
         float x = Random.Range(bLeft.position.x, bRight.position.x);
-
         float y = Random.Range(bBottom.position.y, bTop.position.y);
 
         Instantiate(foodPrefab, new Vector2(x, y), Quaternion.identity);
-
-
     }
 
     void Start()
     {
-        InvokeRepeating("Spawn", 3, 4);
+            InvokeRepeating("Spawn", 0, 3);
     }
 
 }
