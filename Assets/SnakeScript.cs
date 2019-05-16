@@ -15,7 +15,6 @@ public class SnakeScript : MonoBehaviour
     public GameObject tailPrefab;
     
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +24,6 @@ public class SnakeScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
             if (Input.GetKey(KeyCode.RightArrow))
                 dir = new Vector2(0.01f, 0);
             else if (Input.GetKey(KeyCode.DownArrow))
@@ -34,7 +32,6 @@ public class SnakeScript : MonoBehaviour
                 dir = new Vector2(-0.01f, 0);
             else if (Input.GetKey(KeyCode.UpArrow))
                 dir = new Vector2(0, 0.01f);
-
     }
 
     void OnTriggerEnter2D(Collider2D collision)
@@ -74,6 +71,8 @@ public class SnakeScript : MonoBehaviour
         {
             GameObject g = (GameObject)Instantiate(tailPrefab, v, Quaternion.identity);
             tail.Insert(0, g.transform);
+            GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().score += 1;
+            Debug.Log(GameObject.FindGameObjectWithTag("Player").GetComponent<Score>().score);
             ate = false;
         }
 
